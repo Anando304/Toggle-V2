@@ -1,0 +1,68 @@
+package io.github.anandoandroid.togglev2;
+
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+public class MainActivity extends AppCompatActivity {
+    public WifiManager wifimanager; // Used to communicate with wifimodule and wifi on the phone
+    int count = 0;
+    Button wifibutton,spotifybutton,bluetoothbutton;
+    Handler handler;
+    Runnable runnable;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        wifibutton = (Button) findViewById(R.id.WIFI); // sets the button with ID WIFI as a variable called togglebutton
+        spotifybutton = (Button) findViewById(R.id.SPOTIFY);
+        bluetoothbutton = (Button) findViewById(R.id.BLUETOOTH);
+
+        handler = new Handler();
+
+
+
+        wifibutton.setOnClickListener(new View.OnClickListener() { //View.OnClickListener detects if wifibutton has been pressed
+            @Override
+            public void onClick(View v) { //Function that runs when button is clicked
+                EditText input = (EditText) findViewById(R.id.editText2); // finds the value of input and saves it as an EditText
+                int num1 = 60000 *(Integer.parseInt(input.getText().toString()));
+                Toast.makeText(getApplicationContext(), "Your time delay is " + input.getText().toString() + " minutes",
+                        Toast.LENGTH_SHORT).show();
+               /* try{
+                    Thread.sleep(num1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } */
+
+               runnable = new Runnable() { //basically runs the function below when the time delay input has been reached.
+                   @Override
+                   public void run() {
+                       wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE); //casts or puts an object into another object type.Connects manager of wifi to system wifi
+                       wifimanager.setWifiEnabled(false);
+                   }
+               };
+                handler.postDelayed(runnable, num1); // acts similar to a while statement where it runs the runnable functions for time num1.
+                /*wifimanager = (WifiManager) getSystemService(Context.WIFI_SERVICE); //casts or puts an object into another object type.Connects manager of wifi to system wifi
+                wifimanager.setWifiEnabled(false); */
+            }
+        });
+
+
+
+
+    }
+
+}
+
+
+

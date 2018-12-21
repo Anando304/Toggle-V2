@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ToggleV2</string>
+    <string name="wifi">WIFI</string>
+    <string name="spotify">SPOTIFY</string>
+    <string name="bluetooth">BLUETOOTH</string>
+    <string name="todo">TODO</string>
+    <string name="welcome">welcome</string>
+    <string name="stop">STOP</string>
+    <string name="please_enter_time_delay_here">Please Enter Time Delay Here!</string>
+    <string name="exit">EXIT</string>
+    <string name="about">about</string>
+    <string name="enter_a_number">Enter a number</string>
+    <string name="minutes">Minutes</string>
+    <string name="backgroundimg">backgroundimg</string>
+    <string name="buttonname">buttonname</string>
+    <string name="black">black</string>
+    <string name="purple">purple</string>
+    <string name="bckgrndsplash">bckgrndsplash</string>
+    <string name="toolslogo">toolslogo</string>
+</resources>
